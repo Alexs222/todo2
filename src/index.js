@@ -1,8 +1,22 @@
 import React from "react";
-import ReactDom from 'react-dom';
+import {createRoot} from 'react-dom/client';
 
 import './main.scss';
 
-const App = () => <p>Skippi kozel</p>;
+const el = (
+    <div>
+        <h1>My ToDo List</h1>
+        <input placeholder="search" />
+        <ul>
+            <li>Learn React</li>
+            <li>Build Awesome App</li>
+        </ul>
+    </div>
+);
 
-ReactDom.render(<App />, document.getElementById('root'));
+
+
+const container = document.getElementById('root');
+const root = createRoot(document.getElementById('root'));
+
+root.render(el);
