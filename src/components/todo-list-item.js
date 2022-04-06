@@ -1,8 +1,15 @@
 import React from 'react';
 
-    const TodoListItem = () => {
+    const TodoListItem = ({ label, importent = false }) => {
+
+        const style = {
+            color: importent ? 'tomato' : 'black'
+        }
+
         return(
-            <span>Drinc coffee</span>
+            <span style={style}>
+                {label}
+            </span>
         );
     };
 
