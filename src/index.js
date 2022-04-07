@@ -7,6 +7,12 @@ import SearchPanel from "./components/search-panel";
 
 import './main.scss';
 
+const todoData = [
+    {label:'Drinc coffee', importent: false},
+    {label:'React forever', importent: false},
+    {label:'Build Awesome App', importent: true},
+]
+
 
 const App = () => {
 
@@ -14,7 +20,7 @@ const App = () => {
         <div>
             <AppHeader />
             <SearchPanel />
-            <TodoList />
+            <TodoList todos={todoData} />
         </div>
     );
 };
