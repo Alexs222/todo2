@@ -8,9 +8,9 @@ import SearchPanel from "./components/search-panel";
 import './main.scss';
 
 const todoData = [
-    {label:'Drinc coffee', importent: false},
-    {label:'React forever', importent: false},
-    {label:'Build Awesome App', importent: true},
+    {label:'Drinc coffee', importent: false, id: 1 },
+    {label:'React forever', importent: false, id: 2 },
+    {label:'Build Awesome App', importent: true, id: 3 },
 ]
 
 
