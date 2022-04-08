@@ -11,7 +11,7 @@ const TodoList = ({todos}) => {
         const {id, ...otherProps} = item;
 
         return (
-            <li key={id} className='list-group-item'>
+            <li key={id} className='list-group-item '>
                 <TodoListItem {...otherProps} /> 
             </li>
         );

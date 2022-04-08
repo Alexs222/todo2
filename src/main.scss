@@ -1,5 +1,8 @@
-$body-color: orange;
-
-body {
-    background-color: $body-color;
+.todo-app {
+    margin: 2rem auto 0 auto;
+    max-width: 400px;
+}
+  
+.top-panel {
+    margin: 1rem 0;
 }
