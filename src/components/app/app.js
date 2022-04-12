@@ -10,7 +10,7 @@ import "./app.scss";
 
 export default class App extends Component {
 
-  maxID = 100;
+  maxId = 100;
 
   state = {
     todoData: [
@@ -35,22 +35,21 @@ export default class App extends Component {
   };
 
   addItem = (text) => {
-      const newItem = {
-        label: text,
-        importent: false,
-        id: this.maxId++
+    const newItem = {
+      label: text,
+      importent: false,
+      id: this.maxId++
+    }
+
+    this.setState(({ todoData }) => {
+      const newAddedArrey = [...todoData, newItem];
+
+      return {
+        todoData: newAddedArrey
       }
-      
-    //   const newAddedArrey = todoData.push(newItem)
+    })
 
 
-      this.setState(({todoData}) => {
-        const newAddedArrey = [...todoData, newItem];
-        
-        return {
-            todoData: newAddedArrey
-        }
-      })
   }
 
   render() {
