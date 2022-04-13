@@ -52,6 +52,16 @@ export default class App extends Component {
 
   }
 
+  onToggleDone = (id) => {
+    console.log('Done', id);
+  }
+
+  onToggleImportent = (id) => {
+    console.log('Important', id);
+  }
+
+
+
   render() {
     return (
       <div className="todo-app">
@@ -60,7 +70,10 @@ export default class App extends Component {
           <SearchPanel />
           <ItemStatusFilter />
         </div>
-        <TodoList todos={this.state.todoData} onDeleted={this.deleteItem} />
+        <TodoList todos={this.state.todoData} 
+                  onDeleted={this.deleteItem}
+                  onToggleDone={this.onToggleDone}
+                  onToggleImportent={this.onToggleImportent} />
         <ItemAddForm onItemAdded={this.addItem} />
       </div>
     );
