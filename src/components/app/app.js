@@ -14,11 +14,20 @@ export default class App extends Component {
 
   state = {
     todoData: [
-      { label: "Drinc coffee", importent: false, id: 1 },
-      { label: "React forever", importent: false, id: 2 },
-      { label: "Build Awesome App", importent: true, id: 3 },
+      this.createTodoItem('Drinc coffee'),
+      this.createTodoItem('React forever'),
+      this.createTodoItem('Build Awesome App')
     ],
   };
+
+  createTodoItem(label) {
+      return {
+        label,
+        importent: false,
+        done: false,
+        id: this.maxId++
+      }
+  } 
 
   deleteItem = (id) => {
     this.setState(({ todoData }) => {
@@ -35,12 +44,7 @@ export default class App extends Component {
   };
 
   addItem = (text) => {
-    const newItem = {
-      label: text,
-      importent: false,
-      id: this.maxId++
-    }
-
+    const newItem = this.createTodoItem(text)
     this.setState(({ todoData }) => {
       const newAddedArrey = [...todoData, newItem];
 
