@@ -7,7 +7,7 @@ import './todo-list-item.scss';
 export default class TodoListItem extends Component {
 
   render () {
-    const { label, onDeleted, onToggleDone, onToggleImportent, done, important } = this.props;
+    const { label, onDeleted, onToggleDone, onToggleImportant, done, important } = this.props;
 
     let classNames = 'todo-list-item';
     if (done) {
@@ -27,7 +27,7 @@ export default class TodoListItem extends Component {
           </span>
           <button type="button"
                 className="btn btn-outline-success btn-sm float-right"
-                onClick={ onToggleImportent }
+                onClick={ onToggleImportant }
                 >
               <i className="fa fa-exclamation" />
           </button>
