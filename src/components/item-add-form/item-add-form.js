@@ -10,7 +10,6 @@ export default class ItemAddForm extends Component {
 
   onLabelChange = (e) => {
     this.setState({
-      // e.preventDefault();
       label: e.target.value
     })
   }
@@ -25,6 +24,8 @@ export default class ItemAddForm extends Component {
 
   render() {
 
+    const { label } = this.state;
+
     return (
       <form className="item-add-form d-flex"
             onSubmit={this.onSubmit}>
@@ -32,7 +33,7 @@ export default class ItemAddForm extends Component {
               className="form-control"
               placeholder={'What needs to be done'}
               onChange={this.onLabelChange}
-              value={this.state.label}
+              value={ label }
         />
         <button
           type="button"
