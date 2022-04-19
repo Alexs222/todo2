@@ -84,6 +84,18 @@ export default class App extends Component {
     })
   }
 
+  onChangeAll = () => {
+    console.log('onChangeAll')
+  }
+
+  onChangeActive = () => {
+    console.log('onChangeActive')
+  }
+
+  onChangeDone = () => {
+    console.log('onChangeDone')
+  }
+
   render() {
     const {todoData} = this.state
     const countDone = todoData.filter((el)=>el.done).length
@@ -94,12 +106,16 @@ export default class App extends Component {
         <AppHeader toDo={countNotDone} done={countDone} />
         <div className="top-panel d-flex">
           <SearchPanel />
-          <ItemStatusFilter />
+          <ItemStatusFilter
+            onChangeAll={this.onChangeAll}
+            onChangeActive={this.onChangeActive}
+            onChangeDone={this.onChangeDone} 
+            />
         </div>
         <TodoList todos={this.state.todoData} 
-                  onDeleted={this.deleteItem}
-                  onToggleDone={this.onToggleDone}
-                  onToggleImportant={this.onToggleImportant} />
+          onDeleted={this.deleteItem}
+          onToggleDone={this.onToggleDone}
+          onToggleImportant={this.onToggleImportant} />
         <ItemAddForm onItemAdded={this.addItem} />
       </div>
     );
