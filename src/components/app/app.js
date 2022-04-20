@@ -94,6 +94,28 @@ export default class App extends Component {
 
   onChangeDone = () => {
     console.log('onChangeDone')
+    this.setState(({ todoData }) => {
+      const newDoneArrey = todoData.filter((item)=> item.done);
+      console.log(todoData);
+      console.log(newDoneArrey);
+
+      return {
+        todoData: newDoneArrey
+      }
+    })
+  }
+
+  onChangeActive = () => {
+    console.log('onChangeDone')
+    this.setState(({ todoData }) => {
+      const newActiveArrey = todoData.filter((item) => !item.done);
+      console.log(todoData);
+      console.log(newActiveArrey);
+
+      return {
+        todoData: newActiveArrey
+      }
+    })
   }
 
   render() {
@@ -112,7 +134,7 @@ export default class App extends Component {
             onChangeDone={this.onChangeDone} 
             />
         </div>
-        <TodoList todos={this.state.todoData} 
+        <TodoList todos={todoData} 
           onDeleted={this.deleteItem}
           onToggleDone={this.onToggleDone}
           onToggleImportant={this.onToggleImportant} />
