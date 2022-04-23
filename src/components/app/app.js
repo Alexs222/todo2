@@ -18,6 +18,8 @@ export default class App extends Component {
       this.createTodoItem('React forever'),
       this.createTodoItem('Build Awesome App')
     ],
+    
+    term: ''
   };
 
   createTodoItem(label) {
@@ -84,57 +86,33 @@ export default class App extends Component {
     })
   }
 
-  onChangeAll = () => {
-    console.log('onChangeAll')
-  }
+  search(items, term) {
+    if (term.length === 0) {
+      return items;
+    }
 
-  onChangeActive = () => {
-    console.log('onChangeActive')
-  }
-
-  onChangeDone = () => {
-    console.log('onChangeDone')
-    this.setState(({ todoData }) => {
-      const newDoneArrey = todoData.filter((item)=> item.done);
-      console.log(todoData);
-      console.log(newDoneArrey);
-
-      return {
-        todoData: newDoneArrey
-      }
+    return items.filter((item) => {
+      return item.label.indexOf(term) > -1
     })
   }
 
-  onChangeActive = () => {
-    console.log('onChangeDone')
-    this.setState(({ todoData }) => {
-      const newActiveArrey = todoData.filter((item) => !item.done);
-      console.log(todoData);
-      console.log(newActiveArrey);
-
-      return {
-        todoData: newActiveArrey
-      }
-    })
-  }
 
   render() {
-    const {todoData} = this.state
+    const {todoData, term} = this.state
+    const visibleItems = this.search(todoData, term);
+
     const countDone = todoData.filter((el)=>el.done).length
     const countNotDone = todoData.length - countDone;
+
 
     return (
       <div className="todo-app">
         <AppHeader toDo={countNotDone} done={countDone} />
         <div className="top-panel d-flex">
           <SearchPanel />
-          <ItemStatusFilter
-            onChangeAll={this.onChangeAll}
-            onChangeActive={this.onChangeActive}
-            onChangeDone={this.onChangeDone} 
-            />
+          <ItemStatusFilter />
         </div>
-        <TodoList todos={todoData} 
+        <TodoList todos={visibleItems} 
           onDeleted={this.deleteItem}
           onToggleDone={this.onToggleDone}
           onToggleImportant={this.onToggleImportant} />
