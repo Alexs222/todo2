@@ -92,9 +92,15 @@ export default class App extends Component {
     }
 
     return items.filter((item) => {
-      return item.label.indexOf(term) > -1
+      return item.label
+              .toLowerCase()
+              .indexOf(term.toLowerCase()) > -1
     })
   }
+
+    onSearchChange = (term) => {
+      this.setState({term})
+    }
 
 
   render() {
@@ -109,7 +115,8 @@ export default class App extends Component {
       <div className="todo-app">
         <AppHeader toDo={countNotDone} done={countDone} />
         <div className="top-panel d-flex">
-          <SearchPanel />
+          <SearchPanel
+            onSearchChange={this.onSearchChange} />
           <ItemStatusFilter />
         </div>
         <TodoList todos={visibleItems} 
