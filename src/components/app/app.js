@@ -98,9 +98,9 @@ export default class App extends Component {
     })
   }
 
-    onSearchChange = (term) => {
-      this.setState({term})
-    }
+  onSearchChange = (term) => {
+    this.setState({term})
+  }
 
 
   render() {
