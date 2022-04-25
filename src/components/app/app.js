@@ -19,7 +19,8 @@ export default class App extends Component {
       this.createTodoItem('Build Awesome App')
     ],
     
-    term: ''
+    term: '',
+    filter: 'all' // all, active, done
   };
 
   createTodoItem(label) {
@@ -102,6 +103,19 @@ export default class App extends Component {
     this.setState({term})
   }
 
+  filter = (items, filter) => {
+    switch (filter) {
+      case all:
+        return items;
+      case active:
+        return items.filter((item)=> !item.done);
+      case done:
+        return items.filter((item)=> item.done);
+      default:
+        return items;
+    }
+  }
+
 
   render() {
     const {todoData, term} = this.state
@@ -116,8 +130,10 @@ export default class App extends Component {
         <AppHeader toDo={countNotDone} done={countDone} />
         <div className="top-panel d-flex">
           <SearchPanel
-            onSearchChange={this.onSearchChange} />
-          <ItemStatusFilter />
+            onSearchChange={this.onSearchChange} 
+            />
+          <ItemStatusFilter
+           />
         </div>
         <TodoList todos={visibleItems} 
           onDeleted={this.deleteItem}
