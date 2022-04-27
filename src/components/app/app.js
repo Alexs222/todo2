@@ -103,6 +103,11 @@ export default class App extends Component {
     this.setState({term})
   }
 
+  onFilterChange = (filter) => {
+    this.setState({filter})
+  }
+
+
   filter = (items, filter) => {
     switch (filter) {
       case 'all':
@@ -133,7 +138,9 @@ export default class App extends Component {
             onSearchChange={this.onSearchChange} 
             />
           <ItemStatusFilter
-           />
+            filter={filter}
+            onFilterChange={this.onFilterChange}
+          />
         </div>
         <TodoList todos={visibleItems} 
           onDeleted={this.deleteItem}
